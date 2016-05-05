@@ -1,1 +1,11 @@
 node_modules/
+*.wt
+data/WiredTiger
+*.lock
+*.0000000002
+data/diagnostic.data/metrics.interim
+*.2016-05-05T01-44-52Z-00000
+data/journal/WiredTigerLog.0000000001
+*.0000000001
+data/WiredTiger.turtle
+*.bson
