@@ -1,10 +1,14 @@
-let express = require('express');
-let app = express();
+var express = require('express');
+var http = require("http");
+var app = express();
+var server = http.createServer(app).listen(3000);
+var io = require("socket.io")(server);
 
-app.get('/', (req, res)=> {
-  res.send('Hello World!');
+app.use(express.static("./client"));
+io.on("connection", function(socket) {
+	socket.on("chat", function(message) {
+		socket.broadcast.emit("message", message);
+	});
+	socket.emit("message", "Flirt away~");
 });
-
-app.listen(3000, ()=> {
-	console.log('Example app listening on port 3000!');
-});
+console.log("Starting app");
